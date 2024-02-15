@@ -13,6 +13,8 @@ bool SortCompare(string a, string b)
 }
 
 int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
     int n, m, cnt{0};
     cin >> n >> m;
     for(int i{0}; i < n; i++){
@@ -39,9 +41,9 @@ int main(){
             mid = (left + right) / 2;
         }
     }
-    cout << cnt << endl;
+    cout << cnt << '\n';
     for(int i{0}; i < cnt; i++){
-        cout << mh[cn[i]] << endl;
+        cout << mh[cn[i]] << '\n';
     }
 
     return 0;
