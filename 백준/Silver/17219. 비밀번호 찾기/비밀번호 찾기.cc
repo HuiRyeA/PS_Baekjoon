@@ -17,7 +17,7 @@ int main(){
 
     for(int i{0}; i < m; i++){
         cin >> str1;
-        cout << mp.find(str1)->second << endl;
+        cout << mp.find(str1)->second << '\n';
     }
     return 0;
 }
