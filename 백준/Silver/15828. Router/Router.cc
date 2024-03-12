@@ -14,12 +14,12 @@ int main(){
     cin >> num;
     while(num != -1){
         if(num == 0) que.pop();
-        else if(que.size() < n - 1){
+        else if(que.size() < n){
             que.push(num);
         }
         cin >> num;
     }
-
+    if(que.empty()) cout << "empty\n";
     while(!que.empty()){
         cout << que.front() << '\n';
         que.pop();
