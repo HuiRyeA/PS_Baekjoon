@@ -3,14 +3,15 @@ using namespace std;
 
 int main(){
     int sum{0};
-    for(int i{0}; i < 5; i++){
-        int num;
-        cin >> num;
 
-        sum += num * num;
-        sum %= 10;
+    for(int i{0}; i < 5; i++){
+        int temp{0};
+        cin >> temp;
+
+        sum += temp * temp % 10;
     }
 
-    cout << sum << '\n';
+    cout << sum % 10 << endl;
+
     return 0;
 }
