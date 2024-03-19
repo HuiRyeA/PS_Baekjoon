@@ -1,37 +1,29 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int n, m;
+int n, m, cnt[9];
+vector<int> seq;
 
-void pp(int arr[], int cnt){
-    if(cnt != m){
-        for(int i{1}; i < n + 1; i++){
-            for(int j{0}; j < cnt; j++){
-                if(i == arr[j]){
-                    break;
-                }
-                if(j == cnt - 1){
-                    arr[cnt] = i;
-                    pp(arr, cnt + 1);
-                }
-            }
-        }
-    } else if(cnt == m){
-        for(int j{0}; j < cnt; j++){
-            cout << arr[j] << ' ';
-        }
+void fun(){
+    if(seq.size() == m){
+        for(int i : seq) cout << i << ' ';
         cout << '\n';
+        return;
+    }
+
+    for(int i{1}; i <= n; ++i){
+        seq.push_back(i);
+        ++cnt[i];
+        if(cnt[i] == 1) fun();
+
+        seq.pop_back();
+        --cnt[i];
     }
 }
 
 int main(){
     cin >> n >> m;
-
-    for(int j{1}; j < n + 1; j++){
-        int arr[8], cnt{0};
-        arr[cnt] = j;
-        pp(arr, cnt + 1);
-    }
-
+    fun();
     return 0;
 }
