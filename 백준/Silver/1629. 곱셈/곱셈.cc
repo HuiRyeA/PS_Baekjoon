@@ -1,32 +1,20 @@
 #include <iostream>
-#include <stack>
 using namespace std;
 
+long long a, b, c;
+
+long long divide(long long cur){
+    if(cur == 1) return a % c;
+    
+    if(cur % 2 == 0) return (divide(cur / 2) * divide(cur / 2)) % c;
+    else return ((divide(cur / 2) * divide(cur / 2) % c) * (a % c)) % c;
+}
+
 int main(){
-    int tbit[64]{0, }, idx{0};
-    long long a, b, c, result{1};
-    stack<long long> stk;
-
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr); cout.tie(nullptr);
     cin >> a >> b >> c;
-    a %= c;
 
-    while(b > 1){
-        tbit[idx++] = b % 2;
-        b /= 2;
-    }
-    tbit[idx++] = b;
-    
-    stk.push(a);
-    for(int i{1}; i < idx; i++){
-        stk.push((stk.top() * stk.top()) % c);
-        
-    }
-    
-    for(int i{idx - 1}; i > -1; i--){
-        if(tbit[i] == 1) result = (result * stk.top()) % c;
-        stk.pop();
-    }
-
-    cout << result << '\n';
+    cout << divide(b) << '\n';
     return 0;
 }
